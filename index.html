@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="fr-BE" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analyse du Conclave Budgétaire Arizona 2026 | Observatoire Médias & Politique Belge</title>
+    
+    <!-- SEO Essential Meta Tags -->
+    <meta name="description" content="Analyse comparative, macroéconomique et médiatique du conclave budgétaire fédéral de la coalition Arizona en Belgique (2026). Décryptage des réformes, du cadrage presse FR vs NL, des fuites et des contre-expertises.">
+    <meta name="keywords" content="Conclave budgétaire, Coalition Arizona, Bart De Wever, Georges-Louis Bouchez, Belgique, Déficit public, Presse francophone, Presse néerlandophone, Cour des Comptes, Bureau du Plan, FGTB, CSC, PTB, MR">
+    <meta name="author" content="Observatoire Médiatique & Politico-Économique">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <link rel="canonical" href="https://ouaisfieu.github.io/actus/">
+
+    <!-- Open Graph / Facebook Meta Tags -->
+    <meta property="og:locale" content="fr_BE">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Analyse du Conclave Budgétaire Arizona 2026 | Observatoire Médias & Politique">
+    <meta property="og:description" content="Déconstruction synthétique et interactive du traitement médiatique, des arbitrages socio-économiques et des rapports de force politiques du conclave Arizona.">
+    <meta property="og:url" content="https://ouaisfieu.github.io/actus/">
+    <meta property="og:site_name" content="Observatoire Actus Arizona 2026">
+    <meta property="article:published_time" content="2026-10-16T00:00:00+02:00">
+    <meta property="article:section" content="Analyse Médias & Politique">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Analyse du Conclave Budgétaire Arizona 2026">
+    <meta name="twitter:description" content="Découvrez une analyse interactive du conclave Arizona : données macroéconomiques, cadrage presse FR/NL, fuites stratégiques et contre-expertises.">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Report",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://ouaisfieu.github.io/actus/"
+      },
+      "headline": "Analyse du Conclave Budgétaire Arizona 2026 - Observatoire Médiatique & Politico-Économique",
+      "description": "Analyse approfondie du traitement médiatique, des arbitrages socio-économiques et de la contre-expertise du conclave budgétaire fédéral de la coalition Arizona en Belgique.",
+      "inLanguage": "fr-BE",
+      "author": {
+        "@type": "Organization",
+        "name": "Observatoire Médiatique & Politico-Économique",
+        "url": "https://github.com/ouaisfieu/actus"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Observatoire Actus",
+        "url": "https://github.com/ouaisfieu/actus"
+      },
+      "datePublished": "2026-10-16",
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Conclave Budgétaire Belge 2026"
+        },
+        {
+          "@type": "Thing",
+          "name": "Coalition Arizona"
+        }
+      ]
+    }
+    </script>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f4f6f8',
+                            100: '#e3e8ee',
+                            200: '#c7d2fe',
+                            600: '#3b82f6',
+                            700: '#1d4ed8',
+                            800: '#1e3a8a',
+                            900: '#0f172a',
+                        },
+                        amberAccent: '#f59e0b',
+                        emeraldAccent: '#10b981',
+                        roseAccent: '#f43f5e',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 360px;
+            }
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col selection:bg-indigo-500 selection:text-white">
+
+<!-- Chosen Palette: Warm Editorial Harmony (Fonds neutres slate-50/indigo-950, accents indigo, ambre et rose d'alerte) -->
+
+<!-- Application Structure Plan: Navigation sémantique par micro-sections, tableau de bord analytique, matrice filtrable des réformes, module comparatif presse FR/NL, lexique interactif et simulateur d'impact citoyen. Structure optimisée pour le SEO (OpenGraph, Schema.org JSON-LD, balisage WAI-ARIA et hiérarchie H1-H4 stricte). -->
+
+<!-- Visualization & Content Choices:
+   - Trajectoire Dette/Déficit -> Chart.js Line Chart (Canvas)
+   - Rendement Recettes (Gov vs Rekenhof) -> Chart.js Bar Chart (Canvas)
+   - Cadrage Presse FR vs NL -> Chart.js Horizontal Bar Chart (Canvas)
+   - Matrice des Réformes -> Tableau HTML interactif avec filtres JS et recherche dynamique
+   - Simulateur d'impact -> Widget JS avec mise à jour du contenu textuel et analyse médiatique
+   - Aucune balise SVG ni bibliothèque Mermaid JS n'ont été utilisées. -->
+
+<!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:px-4 focus:py-2 focus:bg-indigo-600 focus:text-white focus:rounded-md font-medium text-xs">
+        Aller au contenu principal
+    </a>
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-50 bg-slate-900 text-white shadow-md border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-3">
+                    <span class="text-2xl" aria-hidden="true">🏛️</span>
+                    <div>
+                        <a href="https://ouaisfieu.github.io/actus/" class="font-bold text-lg leading-tight text-slate-100 hover:text-indigo-300 transition">
+                            Observatoire Arizona 2026
+                        </a>
+                        <p class="text-xs text-slate-400 hidden sm:block">Analyse Médiatique, Politico-Économique & Stratégique</p>
+                    </div>
+                </div>
+                <!-- Menu Desktop -->
+                <nav aria-label="Navigation principale" class="hidden md:flex space-x-1 text-xs lg:text-sm font-medium">
+                    <a href="#macro" class="px-3 py-2 rounded-md hover:bg-slate-800 transition text-slate-200">1. Macro & Décisions</a>
+                    <a href="#media-compare" class="px-3 py-2 rounded-md hover:bg-slate-800 transition text-slate-200">2. Presse FR vs NL</a>
+                    <a href="#media-angles" class="px-3 py-2 rounded-md hover:bg-slate-800 transition text-slate-200">3. Angles & Lexique</a>
+                    <a href="#journalism" class="px-3 py-2 rounded-md hover:bg-slate-800 transition text-slate-200">4. Mutation & Fuites</a>
+                    <a href="#counter-expertise" class="px-3 py-2 rounded-md hover:bg-slate-800 transition text-slate-200">5. Contre-Expertise</a>
+                </nav>
+                <div class="flex items-center space-x-2">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                        ⚡ Conclave Oct. 2026
+                    </span>
+                </div>
+            </div>
+        </div>
+        <!-- Menu Mobile Horizontal Scroll -->
+        <nav aria-label="Navigation mobile" class="md:hidden flex overflow-x-auto py-2 px-4 space-x-2 bg-slate-800 border-t border-slate-700 text-xs text-slate-300 whitespace-nowrap custom-scrollbar">
+            <a href="#macro" class="px-2.5 py-1 rounded bg-slate-700">1. Enjeux</a>
+            <a href="#media-compare" class="px-2.5 py-1 rounded bg-slate-700">2. Presse FR/NL</a>
+            <a href="#media-angles" class="px-2.5 py-1 rounded bg-slate-700">3. Spectacle & Mots</a>
+            <a href="#journalism" class="px-2.5 py-1 rounded bg-slate-700">4. Fuites & Médias</a>
+            <a href="#counter-expertise" class="px-2.5 py-1 rounded bg-slate-700">5. Riposte</a>
+        </nav>
+    </header>
+
+    <!-- Hero Banner -->
+    <header class="bg-gradient-to-b from-slate-900 to-indigo-950 text-white py-10 px-4 sm:px-6 lg:px-8 border-b border-indigo-900">
+        <div class="max-w-7xl mx-auto">
+            <div class="max-w-3xl">
+                <span class="text-xs uppercase tracking-widest font-semibold text-indigo-400">Rapport d'Analyse Documentaire & Médiatique</span>
+                <h1 class="text-2xl sm:text-4xl font-extrabold mt-2 tracking-tight text-white">
+                    Le Conclave Budgétaire Arizona sous la Loupe Médiatique
+                </h1>
+                <p class="mt-3 text-sm sm:text-base text-slate-300 leading-relaxed">
+                    Découvrez une déconstruction synthétique et interactive du traitement médiatique, des arbitrages socio-économiques et des rapports de force politiques ayant caractérisé l'accord budgétaire fédéral de la coalition de Bart De Wever.
+                </p>
+            </div>
+
+            <!-- Key Indicators Cards -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+                <div class="bg-slate-800/80 backdrop-blur border border-slate-700/60 p-4 rounded-xl shadow-sm">
+                    <h2 class="text-xs font-medium text-slate-400">Déficit Public (2025)</h2>
+                    <p class="text-2xl font-bold text-rose-400 mt-1">5,8 % <span class="text-xs font-normal text-slate-400">du PIB</span></p>
+                    <p class="text-[11px] text-slate-400 mt-1">~37,2 Mld € de trou budgétaire</p>
+                </div>
+                <div class="bg-slate-800/80 backdrop-blur border border-slate-700/60 p-4 rounded-xl shadow-sm">
+                    <h2 class="text-xs font-medium text-slate-400">Effort Cible (2029)</h2>
+                    <p class="text-2xl font-bold text-amber-400 mt-1">10 à 23 <span class="text-xs font-normal text-slate-400">Mld €</span></p>
+                    <p class="text-[11px] text-slate-400 mt-1">Exigence de la Procédure UE</p>
+                </div>
+                <div class="bg-slate-800/80 backdrop-blur border border-slate-700/60 p-4 rounded-xl shadow-sm">
+                    <h2 class="text-xs font-medium text-slate-400">Projection Dette 2038</h2>
+                    <p class="text-2xl font-bold text-indigo-300 mt-1">130 % <span class="text-xs font-normal text-slate-400">du PIB</span></p>
+                    <p class="text-[11px] text-slate-400 mt-1">Contre 105,7 % en 2024 (Sans réforme)</p>
+                </div>
+                <div class="bg-slate-800/80 backdrop-blur border border-slate-700/60 p-4 rounded-xl shadow-sm">
+                    <h2 class="text-xs font-medium text-slate-400">Temps de Négociation</h2>
+                    <p class="text-2xl font-bold text-emerald-400 mt-1">+239 <span class="text-xs font-normal text-slate-400">Jours</span></p>
+                    <p class="text-[11px] text-slate-400 mt-1">Après les élections fédérales</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main id="main-content" class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
+
+        <!-- SECTION 1: Contexte, Enjeux & Décisions (Question 1) -->
+        <section id="macro" aria-labelledby="macro-heading" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+            <div class="border-b border-slate-100 pb-4 mb-6">
+                <div class="flex items-center space-x-2 text-indigo-600 font-semibold text-xs tracking-wider uppercase">
+                    <span>SECTION 1</span>
+                    <span aria-hidden="true">•</span>
+                    <span>Cadre Factuel & Macroéconomique</span>
+                </div>
+                <h2 id="macro-heading" class="text-xl sm:text-2xl font-bold text-slate-900 mt-1">1. Contexte Macroéconomique & Contenu de l'Accord Arizona</h2>
+                <p class="text-sm text-slate-600 mt-2 leading-relaxed">
+                    Cette section pose les données factuelles consolidées du conclave. Placé sous la menace directe d'une procédure européenne pour déficit excessif, le gouvernement Arizona (N-VA, MR, Vooruit, CD&V, Les Engagés) déploie une stratégie d'État social actif, combinant réformes structurelles du travail, fiscalité ciblée et contraction des dépenses sociales.
+                </p>
+            </div>
+
+            <!-- Charts Row -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                <!-- Chart 1: Trajectoire de la Dette -->
+                <figure class="bg-slate-50 p-5 rounded-xl border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="font-bold text-sm text-slate-800">Projection de la Dette Publique (% PIB)</h3>
+                            <span class="text-xs text-slate-500 bg-white px-2 py-0.5 rounded border border-slate-200">Projections FMI / Com. Monitoring</span>
+                        </div>
+                        <p class="text-xs text-slate-500 mb-4">Évolution comparée de la dette publique belge entre le scénario de statu quo et l'objectif d'assainissement.</p>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="debtChart" aria-label="Graphique montrant l'évolution de la dette publique en pourcentage du PIB de 2024 à 2038" role="img"></canvas>
+                    </div>
+                    <figcaption class="text-[11px] text-slate-500 mt-3 text-center">Source: FMI & Comité de monitoring (Données extraites du rapport source)</figcaption>
+                </figure>
+
+                <!-- Chart 2: Réévaluation des Recettes -->
+                <figure class="bg-slate-50 p-5 rounded-xl border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="font-bold text-sm text-slate-800">Rendement des Mesures : Gouvernement vs Rekenhof</h3>
+                            <span class="text-xs font-semibold text-rose-600 bg-rose-50 px-2 py-0.5 rounded border border-rose-200">Alerte Désaccord</span>
+                        </div>
+                        <p class="text-xs text-slate-500 mb-4">Écart entre les projections initiales du conclave et la contre-expertise de la Cour des Comptes.</p>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="yieldChart" aria-label="Graphique comparant le rendement estimé par le gouvernement et la Cour des Comptes" role="img"></canvas>
+                    </div>
+                    <figcaption class="text-[11px] text-slate-500 mt-3 text-center">La Cour des Comptes met en doute la surévaluation des recettes anti-fraude et environnementales.</figcaption>
+                </figure>
+            </div>
+
+            <!-- Interactive Reform Table Filter -->
+            <div class="mt-8">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
+                    <div>
+                        <h3 class="font-bold text-base text-slate-900">Matrice des Décisions du Conclave par Domaine</h3>
+                        <p class="text-xs text-slate-500">Filtrez et explorez les mesures clés décidées ou envisagées par la coalition.</p>
+                    </div>
+                    <!-- Filter Buttons -->
+                    <div class="flex flex-wrap gap-1.5" id="reformFilters" role="group" aria-label="Filtres par secteur">
+                        <button type="button" onclick="filterReforms('all')" class="reform-btn active px-3 py-1 text-xs rounded-full bg-slate-900 text-white font-medium transition">Toutes</button>
+                        <button type="button" onclick="filterReforms('travail')" class="reform-btn px-3 py-1 text-xs rounded-full bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium transition">Travail</button>
+                        <button type="button" onclick="filterReforms('fiscalite')" class="reform-btn px-3 py-1 text-xs rounded-full bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium transition">Fiscalité</button>
+                        <button type="button" onclick="filterReforms('pensions')" class="reform-btn px-3 py-1 text-xs rounded-full bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium transition">Pensions</button>
+                        <button type="button" onclick="filterReforms('sante')" class="reform-btn px-3 py-1 text-xs rounded-full bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium transition">Santé/Chômage</button>
+                    </div>
+                </div>
+
+                <!-- Search Input -->
+                <div class="mb-4">
+                    <label for="reformSearch" class="sr-only">Rechercher une mesure budgétaire</label>
+                    <input type="text" id="reformSearch" onkeyup="searchReforms()" placeholder="🔍 Rechercher une mesure (ex: TVA, heures supplémentaires, malus, F-35...)" class="w-full text-xs sm:text-sm px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:outline-none bg-slate-50">
+                </div>
+
+                <!-- Table Content -->
+                <div class="overflow-x-auto rounded-xl border border-slate-200">
+                    <table class="min-w-full divide-y divide-slate-200 text-xs sm:text-sm">
+                        <caption class="sr-only">Tableau exhaustif des réformes budgétaires et socio-économiques du conclave Arizona</caption>
+                        <thead class="bg-slate-100 text-slate-700 font-semibold">
+                            <tr>
+                                <th scope="col" class="px-4 py-3 text-left">Domaine Stratégique</th>
+                                <th scope="col" class="px-4 py-3 text-left">Mesure Décidée / Envisagée</th>
+                                <th scope="col" class="px-4 py-3 text-left">Mise en Œuvre & Impact Concret</th>
+                                <th scope="col" class="px-4 py-3 text-center">Portée</th>
+                            </tr>
+                        </thead>
+                        <tbody id="reformTableBody" class="divide-y divide-slate-200 bg-white">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: Divergences FR vs NL (Question 2) -->
+        <section id="media-compare" aria-labelledby="media-heading" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+            <div class="border-b border-slate-100 pb-4 mb-6">
+                <div class="flex items-center space-x-2 text-indigo-600 font-semibold text-xs tracking-wider uppercase">
+                    <span>SECTION 2</span>
+                    <span aria-hidden="true">•</span>
+                    <span>Analyse Comparative Linguistique</span>
+                </div>
+                <h2 id="media-heading" class="text-xl sm:text-2xl font-bold text-slate-900 mt-1">2. Divergences de Cadrage : Presse Francophone vs Presse Néerlandophone</h2>
+                <p class="text-sm text-slate-600 mt-2 leading-relaxed">
+                    La Belgique fonctionnant comme une démocratie consociative avec deux espaces publics distincts (étudiés par le Cevipol et l'ORM/UCLouvain), l'événement a été filtré à travers deux prismes idéo-culturels profondément divergents.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <!-- Dual Interactive Toggle / Description -->
+                <div class="lg:col-span-7 space-y-4">
+                    <div class="flex space-x-2 border-b border-slate-200 pb-2" role="tablist" aria-label="Presse par communauté">
+                        <button type="button" role="tab" aria-selected="true" id="btn-nl" onclick="switchMediaTab('nl')" class="px-4 py-2 text-xs sm:text-sm font-bold rounded-lg bg-amber-500 text-white transition">
+                            🦁 Prisme Néerlandophone (De Tijd, De Standaard, VRT)
+                        </button>
+                        <button type="button" role="tab" aria-selected="false" id="btn-fr" onclick="switchMediaTab('fr')" class="px-4 py-2 text-xs sm:text-sm font-bold rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 transition">
+                            🐓 Prisme Francophone (Le Soir, La Libre, RTBF, L'Echo)
+                        </button>
+                    </div>
+
+                    <!-- Content Panel NL -->
+                    <article id="content-nl" role="tabpanel" aria-labelledby="btn-nl" class="space-y-3 bg-amber-50/50 border border-amber-200 p-5 rounded-xl">
+                        <div class="flex items-center space-x-2 text-amber-800 font-bold text-sm">
+                            <span aria-hidden="true">⚡</span>
+                            <h3 class="font-bold text-sm text-amber-900">Axe Majeur : Rationalité Comptable & État Social Actif</h3>
+                        </div>
+                        <p class="text-xs sm:text-sm text-slate-700 leading-relaxed">
+                            Dans la presse flamande, le conclave est présenté comme un <strong>redressement moral inévitable</strong> face au laxisme des gouvernements précédents. La priorité absolue est donnée à la compétitivité de l'offre et à la discipline budgétaire.
+                        </p>
+                        <ul class="text-xs text-slate-600 space-y-2 list-disc pl-4">
+                            <li><strong>Focus sur l'activation :</strong> Traitement des malades de longue durée et chômeurs sous l'angle du retour à l'emploi ("trajets de réintégration").</li>
+                            <li><strong>Figure centrale :</strong> Bart De Wever est portraituré en homme d'État responsable (<em>staatsman</em>) affrontant une machine fédérale grippée.</li>
+                            <li><strong>Analyse technique :</strong> Valorisation des données de la Banque Nationale pour démontrer l'absence d'alternative.</li>
+                        </ul>
+                    </article>
+
+                    <!-- Content Panel FR (Hidden initially) -->
+                    <article id="content-fr" role="tabpanel" aria-labelledby="btn-fr" class="hidden space-y-3 bg-indigo-50/50 border border-indigo-200 p-5 rounded-xl">
+                        <div class="flex items-center space-x-2 text-indigo-900 font-bold text-sm">
+                            <span aria-hidden="true">🛡️</span>
+                            <h3 class="font-bold text-sm text-indigo-950">Axe Majeur : Urgence Sociale & Résistance Institutionnelle</h3>
+                        </div>
+                        <p class="text-xs sm:text-sm text-slate-700 leading-relaxed">
+                            Dans la presse francophone, le récit est centré sur la <strong>défense du pouvoir d'achat</strong>, les risques de sous-financement de la Wallonie et de Bruxelles, et la dégradation des acquis sociaux.
+                        </p>
+                        <ul class="text-xs text-slate-600 space-y-2 list-disc pl-4">
+                            <li><strong>Focus sur la casse sociale :</strong> Inquiétudes majeures face au malus pension, à l'annualisation du temps de travail et à la limitation du chômage.</li>
+                            <li><strong>Figure centrale :</strong> Georges-Louis Bouchez (MR) fait l'objet d'une personnalisation extrême (véto TVA), perçu soit en rempart du pouvoir d'achat, soit en agent de blocage par <em>hubris</em>.</li>
+                            <li><strong>Choc asymétrique :</strong> Dénonciation du risque de définancement des entités fédérées du Sud.</li>
+                        </ul>
+                    </article>
+                </div>
+
+                <!-- Chart: Media Radar Focus -->
+                <figure class="lg:col-span-5 bg-slate-50 p-5 rounded-xl border border-slate-200">
+                    <h3 class="font-bold text-sm text-slate-800 text-center mb-1">Intensité de la Couverture par Thématique</h3>
+                    <p class="text-xs text-slate-500 text-center mb-3">Pondération relative des axes d'attention médiatique (Échelle 0-100)</p>
+                    <div class="chart-container">
+                        <canvas id="mediaRadarChart" aria-label="Graphique montrant l'intensité du cadrage médiatique par thématique entre presse francophone et néerlandophone" role="img"></canvas>
+                    </div>
+                </figure>
+            </div>
+        </section>
+
+        <!-- SECTION 3: Angles Médiatiques, Spectacle & Lexique (Question 3) -->
+        <section id="media-angles" aria-labelledby="angles-heading" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+            <div class="border-b border-slate-100 pb-4 mb-6">
+                <div class="flex items-center space-x-2 text-indigo-600 font-semibold text-xs tracking-wider uppercase">
+                    <span>SECTION 3</span>
+                    <span aria-hidden="true">•</span>
+                    <span>Spectacularisation & Biais Cognitifs</span>
+                </div>
+                <h2 id="angles-heading" class="text-xl sm:text-2xl font-bold text-slate-900 mt-1">3. Analyse des Angles : Journalisme de Spectacle & Guerre du Vocabulaire</h2>
+                <p class="text-sm text-slate-600 mt-2 leading-relaxed">
+                    Les rédactions ont été confrontées au dilemme de la vulgarisation de mécanismes complexes. Le traitement généraliste a souvent cédé à la tentation du journalisme d'affrontement (<em>horse-race journalism</em>) et à des formats hybrides à mi-chemin entre politique et téléréalité.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Sub-section A: Horse-race journalism & Het Conclaaf -->
+                <article class="space-y-4">
+                    <div class="flex items-center space-x-2">
+                        <span class="text-lg" aria-hidden="true">📺</span>
+                        <h3 class="font-bold text-base text-slate-800">3a. La Théâtralisation & Le "Horse-Race Journalism"</h3>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-3">
+                        <p class="text-xs sm:text-sm text-slate-700 leading-relaxed">
+                            L'affrontement sur la fiscalité (notamment le véto du MR sur la TVA à 9 %) est devenu l'épicentre dramatique. L'essentiel des débats télévisés s'est concentré sur la question personnalisée : <em>« Qui cèdera le premier entre Bart De Wever et Georges-Louis Bouchez ? »</em> au détriment de l'impact macroéconomique réel.
+                        </p>
+                        <div class="p-3 bg-amber-50 rounded-lg border border-amber-200 text-xs text-amber-900">
+                            <strong>L'Exemple <em>Het Conclaaf</em> (VTM) :</strong> Format médiatique où les présidents de partis ont été fermés dans un château à Jemeppe, adoptant les codes visuels et narratifs de la téléréalité pour convertir la négociation en divertissement politique.
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Sub-section B: Lexicon & Cognitive Framing -->
+                <article class="space-y-4">
+                    <div class="flex items-center space-x-2">
+                        <span class="text-lg" aria-hidden="true">🗣️</span>
+                        <h3 class="font-bold text-base text-slate-800">3b. L'Armement Linguistique & Métaphores Cognitives</h3>
+                    </div>
+                    <p class="text-xs text-slate-600">
+                        Cliquez sur les registres pour comparer la rhétorique du gouvernement (TINA) à la riposte syndicale et de l'opposition :
+                    </p>
+
+                    <div class="space-y-2">
+                        <!-- Accordion 1 -->
+                        <div class="border border-slate-200 rounded-lg overflow-hidden">
+                            <button type="button" onclick="toggleAccordion('acc-gov')" aria-expanded="true" aria-controls="acc-gov" class="w-full text-left px-4 py-2.5 bg-slate-100 font-bold text-xs sm:text-sm text-slate-800 flex justify-between items-center">
+                                <span>🏛️ Registre Gouvernemental (Choc & Inévitabilité)</span>
+                                <span aria-hidden="true">▼</span>
+                            </button>
+                            <div id="acc-gov" class="p-3 text-xs text-slate-600 bg-white space-y-1">
+                                <p>• <strong>« Droit dans le mur » :</strong> Métaphore spatiale instillant la certitude d'une catastrophe imminente.</p>
+                                <p>• <strong>« Trou énorme » / « Scénario à la grecque » :</strong> Création d'un état de choc psychologique pour conditionner l'opinion à la méthode TINA (<em>There Is No Alternative</em>).</p>
+                            </div>
+                        </div>
+
+                        <!-- Accordion 2 -->
+                        <div class="border border-slate-200 rounded-lg overflow-hidden">
+                            <button type="button" onclick="toggleAccordion('acc-opp')" aria-expanded="false" aria-controls="acc-opp" class="w-full text-left px-4 py-2.5 bg-slate-100 font-bold text-xs sm:text-sm text-slate-800 flex justify-between items-center">
+                                <span>🔥 Registre Syndical & PTB (Hold-up & Régression)</span>
+                                <span aria-hidden="true">▼</span>
+                            </button>
+                            <div id="acc-opp" class="hidden p-3 text-xs text-slate-600 bg-white space-y-1">
+                                <p>• <strong>« Le casse du siècle » / « Vol des pensions » (PTB) :</strong> Traitement de la mesure sous l'angle du banditisme d'État.</p>
+                                <p>• <strong>« Liste des horreurs » & « Bain de sang social » (FGTB) :</strong> Emploi de métaphores d'une violence extrême renvoyant au « 19ème siècle ».</p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- SECTION 4 & 5: Mutations Journalistiques & Fuites (Questions 4 & 5) -->
+        <section id="journalism" aria-labelledby="journalism-heading" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+            <div class="border-b border-slate-100 pb-4 mb-6">
+                <div class="flex items-center space-x-2 text-indigo-600 font-semibold text-xs tracking-wider uppercase">
+                    <span>SECTIONS 4 & 5</span>
+                    <span aria-hidden="true">•</span>
+                    <span>Pratiques Journalistiques & Armement de l'Information</span>
+                </div>
+                <h2 id="journalism-heading" class="text-xl sm:text-2xl font-bold text-slate-900 mt-1">4 & 5. Présidentialisation, Désintermédiation et Stratégie des Fuites</h2>
+                <p class="text-sm text-slate-600 mt-2 leading-relaxed">
+                    Basé sur les travaux du Cevipol, de l'ORM, du Mediapunt Vlaanderen et des déclarations de l'AJP, ce module documente la mutation structurelle de la couverture politique et la perte de contrôle des rédactions face à la gestion tactique des fuites.
+                </p>
+            </div>
+
+            <!-- Process Grid: Trial Balloons & Leaks -->
+            <div class="mb-8">
+                <h3 class="font-bold text-sm text-slate-800 mb-3">🔄 Mécanisme d'Ingénierie de la Fuite : La "Super Note" comme Ballons d'Essai</h3>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-3 text-xs">
+                    <article class="bg-indigo-50 border border-indigo-200 p-3.5 rounded-xl">
+                        <h4 class="font-bold text-indigo-900 block mb-1">1. Fuite Calculée</h4>
+                        <p class="text-slate-600">Dissémination stratégique d'extraits de la "Super Note" (ex: Malus pension 5%, fin des 38h) à des titres ciblés.</p>
+                    </article>
+                    <article class="bg-amber-50 border border-amber-200 p-3.5 rounded-xl">
+                        <h4 class="font-bold text-amber-900 block mb-1">2. Test de Seuil</h4>
+                        <p class="text-slate-600">Mesure de la capacité d'encaissement de l'opinion, des marchés, du patronat et des syndicats (<em>Trial Balloon</em>).</p>
+                    </article>
+                    <article class="bg-rose-50 border border-rose-200 p-3.5 rounded-xl">
+                        <h4 class="font-bold text-rose-900 block mb-1">3. Coercition Interne</h4>
+                        <p class="text-slate-600">Révélation des concessions faites à huis clos pour piéger un partenaire de coalition et l'empêcher de faire marche arrière.</p>
+                    </article>
+                    <article class="bg-emerald-50 border border-emerald-200 p-3.5 rounded-xl">
+                        <h4 class="font-bold text-emerald-900 block mb-1">4. Arbitrage ou Démenti</h4>
+                        <p class="text-slate-600">Si la réaction sociale est trop vive, la mesure est qualifiée de « simple piste » ; dans le cas contraire, elle est entérinée.</p>
+                    </article>
+                </div>
+            </div>
+
+            <!-- Academic Insights Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Card 1: Présidentialisation -->
+                <article class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                    <div class="flex items-center space-x-2 mb-2">
+                        <span class="text-base" aria-hidden="true">🏛️</span>
+                        <h3 class="font-bold text-xs sm:text-sm text-slate-800">Présidentialisation & Désintermédiation</h3>
+                    </div>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Le Cevipol et Ivan De Vadder dénoncent le fait que les présidents de partis siègent directement à la table des négociations, réduisant les ministres en titre à des exécutants. Parallèlement, des leaders comme Georges-Louis Bouchez utilisent X/Facebook pour dicter l'agenda et contourner les journalistes.
+                    </p>
+                </article>
+
+                <!-- Card 2: Précarité des Rédactions -->
+                <article class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                    <div class="flex items-center space-x-2 mb-2">
+                        <span class="text-base" aria-hidden="true">📉</span>
+                        <h3 class="font-bold text-xs sm:text-sm text-slate-800">Précarisation analytique (ORM)</h3>
+                    </div>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        L'ORM (UCLouvain) pointe la précarisation des journalistes face à la technicité croissante des lois-programmes. La course au clics réduit le temps d'investigation et contraint les rédactions à réagir à des tweets plutôt qu'à analyser les documents sources.
+                    </p>
+                </article>
+
+                <!-- Card 3: Pression Juridique AJP -->
+                <article class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                    <div class="flex items-center space-x-2 mb-2">
+                        <span class="text-base" aria-hidden="true">⚖️</span>
+                        <h3 class="font-bold text-xs sm:text-sm text-slate-800">Poursuites SLAPP & Secret Pro (AJP)</h3>
+                    </div>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        L'AJP dénonce l'essor des procédures-bâillons (SLAPP) et le durcissement des sanctions pour violation du secret professionnel en Belgique, créant un <em>chilling effect</em> visant à tarir les sources internes et décourager l'investigation sur les conclaves.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <!-- SECTION 6: Riposte par la Contre-Expertise (Question 6) -->
+        <section id="counter-expertise" aria-labelledby="counter-heading" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+            <div class="border-b border-slate-100 pb-4 mb-6">
+                <div class="flex items-center space-x-2 text-indigo-600 font-semibold text-xs tracking-wider uppercase">
+                    <span>SECTION 6</span>
+                    <span aria-hidden="true">•</span>
+                    <span>Déconstruction & Contre-Pouvoirs</span>
+                </div>
+                <h2 id="counter-heading" class="text-xl sm:text-2xl font-bold text-slate-900 mt-1">6. La Riposte par la Contre-Expertise Externalisée</h2>
+                <p class="text-sm text-slate-600 mt-2 leading-relaxed">
+                    L'hégémonie du récit gouvernemental a été contestée par l'intervention d'institutions publiques indépendantes, de think tanks, des syndicats et de l'opposition politique, offrant aux rédactions un matériel de déconstruction précieux.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Institutionnel: Cour des Comptes & Bureau du Plan -->
+                <article class="bg-slate-50 p-5 rounded-xl border border-slate-200 space-y-4">
+                    <div class="flex items-center space-x-2 border-b border-slate-200 pb-2">
+                        <span class="text-lg" aria-hidden="true">🏛️</span>
+                        <h3 class="font-bold text-sm text-slate-800">Institutionnels : Cour des Comptes & Bureau du Plan</h3>
+                    </div>
+                    <ul class="text-xs text-slate-600 space-y-3">
+                        <li class="bg-white p-3 rounded-lg border border-slate-200">
+                            <strong class="text-rose-700 block mb-1">• Audit Sévère de la Cour des Comptes (Rekenhof) :</strong>
+                            Remise en cause formelle de la fiabilité de l'équation budgétaire. Les recettes espérées de la lutte contre la fraude fiscale et des taxes environnementales ont été jugées surestimées (recettes ramenées par exemple de plusieurs milliards à 120 M€).
+                        </li>
+                        <li class="bg-white p-3 rounded-lg border border-slate-200">
+                            <strong class="text-indigo-700 block mb-1">• Bureau Fédéral du Plan :</strong>
+                            Publication de 250 options d'assainissement alternatives et désaveu technique du saut d'index partiel, démontrant que la baisse du pouvoir d'achat détruirait des recettes de TVA et de cotisations sociales.
+                        </li>
+                        <li class="bg-white p-3 rounded-lg border border-slate-200">
+                            <strong class="text-slate-800 block mb-1">• Think Tank Minerva :</strong>
+                            Démonstration que les 16,8 Mld € investis dans la Défense contredisent l'austérité sociale et que la baisse continue des cotisations patronales (4 Mld €) organise le déficit de la sécurité sociale.
+                        </li>
+                    </ul>
+                </article>
+
+                <!-- Partenaires Sociaux & Opposition -->
+                <article class="bg-slate-50 p-5 rounded-xl border border-slate-200 space-y-4">
+                    <div class="flex items-center space-x-2 border-b border-slate-200 pb-2">
+                        <span class="text-lg" aria-hidden="true">✊</span>
+                        <h3 class="font-bold text-sm text-slate-800">Syndicats, Patronat & Opposition (PTB/PS)</h3>
+                    </div>
+                    <ul class="text-xs text-slate-600 space-y-3">
+                        <li class="bg-white p-3 rounded-lg border border-slate-200">
+                            <strong class="text-emerald-700 block mb-1">• Budget Alternatif de la CSC & FGTB :</strong>
+                            Démonstration par le Front Commun Syndical qu'une taxation réelle des revenus du capital permettrait de combler le déficit sans toucher aux droits des travailleurs.
+                        </li>
+                        <li class="bg-white p-3 rounded-lg border border-slate-200">
+                            <strong class="text-rose-700 block mb-1">• Riposte Numérique du PTB (PVDA) :</strong>
+                            Mise en ligne de calculateurs de perte de pension interactifs et de la plateforme "L'Arizona démasqué", permettant aux citoyens de chiffrer leurs pertes individuelles (plusieurs centaines d'euros/mois).
+                        </li>
+                        <li class="bg-white p-3 rounded-lg border border-slate-200">
+                            <strong class="text-amber-700 block mb-1">• Positions Patronales (FEB / UCM) :</strong>
+                            Soutien global aux allégements de charges patronales mais réserves émises sur la complexité administrative liée à la gestion de la maladie et à l'exit tax.
+                        </li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <!-- Interactive Widget: Citizen Impact Simulator -->
+        <section aria-labelledby="simulator-heading" class="bg-gradient-to-r from-slate-900 to-indigo-900 text-white rounded-2xl p-6 sm:p-8 shadow-lg">
+            <div class="max-w-3xl">
+                <span class="text-xs uppercase tracking-widest font-semibold text-amber-400">Outil Interactif d'Analyse</span>
+                <h2 id="simulator-heading" class="text-xl sm:text-2xl font-bold mt-1 text-white">Simulateur Synthétique des Mesures Arizona</h2>
+                <p class="text-xs sm:text-sm text-slate-300 mt-2">
+                    Sélectionnez un profil pour observer l'impact croisé des mesures phares de l'accord et le cadrage médiatique associé :
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+                <!-- Selector Buttons -->
+                <button type="button" onclick="simulateImpact('salarie')" class="sim-btn p-4 rounded-xl border border-slate-700 bg-slate-800 hover:bg-slate-700 text-left transition focus:outline-none focus:ring-2 focus:ring-amber-400">
+                    <span class="text-lg block mb-1" aria-hidden="true">💼</span>
+                    <span class="font-bold text-sm block text-slate-100">Salarié > 4000€ brut</span>
+                    <span class="text-[11px] text-slate-400">Touché par l'indexation et les 45h</span>
+                </button>
+                <button type="button" onclick="simulateImpact('pensionne')" class="sim-btn p-4 rounded-xl border border-slate-700 bg-slate-800 hover:bg-slate-700 text-left transition focus:outline-none focus:ring-2 focus:ring-amber-400">
+                    <span class="text-lg block mb-1" aria-hidden="true">👴</span>
+                    <span class="font-bold text-sm block text-slate-100">Fin de carrière (&lt; 35 ans)</span>
+                    <span class="text-[11px] text-slate-400">Exposé au Malus Pension</span>
+                </button>
+                <button type="button" onclick="simulateImpact('investisseur')" class="sim-btn p-4 rounded-xl border border-slate-700 bg-slate-800 hover:bg-slate-700 text-left transition focus:outline-none focus:ring-2 focus:ring-amber-400">
+                    <span class="text-lg block mb-1" aria-hidden="true">📈</span>
+                    <span class="font-bold text-sm block text-slate-100">Investisseur / Épargnant</span>
+                    <span class="text-[11px] text-slate-400">Taxe 10% plus-values & VVPR-bis</span>
+                </button>
+            </div>
+
+            <!-- Simulator Output Box -->
+            <div id="simResult" aria-live="polite" class="mt-6 p-5 rounded-xl bg-slate-800/90 border border-slate-700/80 text-xs sm:text-sm leading-relaxed text-slate-200">
+                <p class="text-slate-400 italic">👉 Cliquez sur un profil ci-dessus pour afficher l'analyse d'impact et son traitement médiatique.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 text-xs py-8 border-t border-slate-800 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-3">
+            <p class="text-slate-300 font-semibold">Observatoire d'Analyse Médiatique & Politico-Économique - Conclave Arizona 2026</p>
+            <p>Plateforme hébergée sur <a href="https://github.com/ouaisfieu/actus" class="underline hover:text-white transition">github.com/ouaisfieu/actus</a> • Analyse documentaire exhaustive de la coalition Arizona.</p>
+            <p class="text-slate-500 text-[11px]">Réalisé avec HTML5 Sémantique, Tailwind CSS et Chart.js • Accessible et optimisé SEO.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        const reformsData = [
+            { domain: "travail", cat: "Marché du Travail", measure: "Semaine de 45h & Annualisation", impact: "Remise en cause des 38h via l'annualisation du temps de travail (limite 48h UE). Extension des heures supp. à 360h (dont 240 sans sursalaire).", scope: "🔴 Majeure" },
+            { domain: "travail", cat: "Marché du Travail", measure: "Travail de Nuit & Flexi-jobs", impact: "Début du travail de nuit repoussé à minuit (perte de prime). Flexi-jobs plafond rehaussé à 18 000€.", scope: "🟡 Modérée" },
+            { domain: "fiscalite", cat: "Fiscalité & Capital", measure: "Taxe 10% Plus-values Financières", impact: "Taxation des plus-values financières au-delà d'un million d'euros d'encours.", scope: "🟢 Ciblé" },
+            { domain: "fiscalite", cat: "Fiscalité & Capital", measure: "Remaniement TVA & VVPR-bis", impact: "TVA rénovation/Horeca de 6% à 9%. Précompte mobilier VVPR-bis passe de 15% à 18%. TVA charbon 21%.", scope: "🔴 Majeure" },
+            { domain: "fiscalite", cat: "Fiscalité & Capital", measure: "Suppression Déduction Intérêts", impact: "Fin de la déduction d'intérêts pour les multipropriétaires sur le marché locatif.", scope: "🟡 Modérée" },
+            { domain: "pensions", cat: "Pensions & Carrières", measure: "Malus Pension (2% à 5%)", impact: "Pénalisation de 2% à 5% par an en cas de départ anticipé sans 35 ans de carrière de 156 jours effectifs (7020 jours).", scope: "🔴 Structurelle" },
+            { domain: "pensions", cat: "Pensions & Carrières", measure: "Restrictions RCC & Landingsbanen", impact: "Chômage avec complément d'entreprise (ex-prépension) limité aux restructurations. Landingsbanen reportés à 35 ans de carrière.", scope: "🟡 Modérée" },
+            { domain: "sante", cat: "Santé & Inactifs", measure: "Co-responsabilisation Employeurs", impact: "Employeur prend en charge 30% du salaire durant les mois 2 et 3 de maladie longue durée (en échange de la fin des amendes).", scope: "🟡 Modérée" },
+            { domain: "sante", cat: "Santé & Inactifs", measure: "Trajet de Réintégration Obligatoire", impact: "Évaluation du potentiel après 8 semaines. Sanctions jusqu'à 10% sur l'allocation en cas de refus du travailleur.", scope: "🔴 Majeure" },
+            { domain: "sante", cat: "Chômage & Pouvoir d'Achat", measure: "Limitation du Chômage à 2 ans", impact: "Plafonnement des allocations dans le temps à 24 mois maximum d'indemnisation de base.", scope: "🔴 Structurelle" },
+            { domain: "sante", cat: "Chômage & Pouvoir d'Achat", measure: "Plafonnement Indexation > 4000€", impact: "Sauts d'index ciblés en 2026 et 2028 sur la tranche salariale supérieure à 4 000€ brut.", scope: "🟡 Modérée" },
+            { domain: "sante", cat: "Institutions & Défense", measure: "Réinvestissement Défense (16,8 Mld€)", impact: "Achat d'avions F-35 et missiles Amraam pour atteindre 2% du PIB OTAN d'ici 2029. Suppression prospective du Sénat.", scope: "🟢 Stratégique" }
+        ];
+
+        function renderReforms(data) {
+            const tbody = document.getElementById('reformTableBody');
+            tbody.innerHTML = '';
+            data.forEach(item => {
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-slate-50 transition";
+                tr.innerHTML = `
+                    <td class="px-4 py-3 font-semibold text-slate-800">${item.cat}</td>
+                    <td class="px-4 py-3 font-bold text-indigo-900">${item.measure}</td>
+                    <td class="px-4 py-3 text-slate-600 leading-normal">${item.impact}</td>
+                    <td class="px-4 py-3 text-center whitespace-nowrap">${item.scope}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function filterReforms(cat) {
+            document.querySelectorAll('.reform-btn').forEach(btn => {
+                btn.classList.remove('bg-slate-900', 'text-white');
+                btn.classList.add('bg-slate-100', 'text-slate-700');
+            });
+            event.target.classList.remove('bg-slate-100', 'text-slate-700');
+            event.target.classList.add('bg-slate-900', 'text-white');
+
+            if (cat === 'all') {
+                renderReforms(reformsData);
+            } else {
+                const filtered = reformsData.filter(r => r.domain === cat);
+                renderReforms(filtered);
+            }
+        }
+
+        function searchReforms() {
+            const query = document.getElementById('reformSearch').value.toLowerCase();
+            const filtered = reformsData.filter(r => 
+                r.measure.toLowerCase().includes(query) || 
+                r.impact.toLowerCase().includes(query) ||
+                r.cat.toLowerCase().includes(query)
+            );
+            renderReforms(filtered);
+        }
+
+        function switchMediaTab(lang) {
+            const btnFr = document.getElementById('btn-fr');
+            const btnNl = document.getElementById('btn-nl');
+            const contentFr = document.getElementById('content-fr');
+            const contentNl = document.getElementById('content-nl');
+
+            if (lang === 'fr') {
+                btnFr.className = "px-4 py-2 text-xs sm:text-sm font-bold rounded-lg bg-indigo-600 text-white transition";
+                btnFr.setAttribute('aria-selected', 'true');
+                btnNl.className = "px-4 py-2 text-xs sm:text-sm font-bold rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 transition";
+                btnNl.setAttribute('aria-selected', 'false');
+                contentFr.classList.remove('hidden');
+                contentNl.classList.add('hidden');
+            } else {
+                btnNl.className = "px-4 py-2 text-xs sm:text-sm font-bold rounded-lg bg-amber-500 text-white transition";
+                btnNl.setAttribute('aria-selected', 'true');
+                btnFr.className = "px-4 py-2 text-xs sm:text-sm font-bold rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 transition";
+                btnFr.setAttribute('aria-selected', 'false');
+                contentNl.classList.remove('hidden');
+                contentFr.classList.add('hidden');
+            }
+        }
+
+        function toggleAccordion(id) {
+            const el = document.getElementById(id);
+            const button = event.currentTarget;
+            if (el.classList.contains('hidden')) {
+                el.classList.remove('hidden');
+                button.setAttribute('aria-expanded', 'true');
+            } else {
+                el.classList.add('hidden');
+                button.setAttribute('aria-expanded', 'false');
+            }
+        }
+
+        function simulateImpact(profile) {
+            const res = document.getElementById('simResult');
+            if (profile === 'salarie') {
+                res.innerHTML = `
+                    <div class="space-y-2">
+                        <h3 class="font-bold text-amber-400">Impact : Cadre / Salarié (> 4000€ brut)</h3>
+                        <p>• <strong>Impact Budgétaire :</strong> Sauts d'indexation ciblés en 2026/2028 sur la tranche supérieure à 4 000€. Possibilité d'imposer des semaines de 45h (jusqu'à 360h supp. dont 240 sans sursalaire).</p>
+                        <p>• <strong>Cadrage Presse FR :</strong> Présenté comme une dégradation du pouvoir d'achat et une pression accrue sur la vie privée.</p>
+                        <p>• <strong>Cadrage Presse NL :</strong> Qualifié d'effort solidaire nécessaire pour soutenir la compétitivité et geler les coûts salariaux.</p>
+                    </div>
+                `;
+            } else if (profile === 'pensionne') {
+                res.innerHTML = `
+                    <div class="space-y-2">
+                        <h3 class="font-bold text-rose-400">Impact : Fin de Carrière (&lt; 35 ans de travail effectif)</h3>
+                        <p>• <strong>Impact Budgétaire :</strong> Application du <em>Malus Pension</em> (-2% à -5% par année d'anticipation si moins de 7020 jours travaillés). Accès aux landingsbanen différé à 35 ans de carrière.</p>
+                        <p>• <strong>Cadrage Presse FR :</strong> Dénoncé sous les termes de « vol des pensions » et de « sanction punitive » pour les carrières hachées.</p>
+                        <p>• <strong>Cadrage Presse NL :</strong> Analysé sous l'angle de la soutenabilité comptable et de l'alignement sur l'espérance de vie.</p>
+                    </div>
+                `;
+            } else if (profile === 'investisseur') {
+                res.innerHTML = `
+                    <div class="space-y-2">
+                        <h3 class="font-bold text-emerald-400">Impact : Investisseur / Détenteur de Capital</h3>
+                        <p>• <strong>Impact Budgétaire :</strong> Taxe de 10% sur les plus-values financières au-delà d'1M€. Hausse du précompte mobilier VVPR-bis de 15% à 18%. Fin de la déduction d'intérêts pour multipropriétaires.</p>
+                        <p>• <strong>Cadrage Presse FR :</strong> Accent mis sur les atermoiements du MR (Bouchez) s'opposant à toute nouvelle fiscalité.</p>
+                        <p>• <strong>Cadrage Presse NL (De Tijd) :</strong> Analyse technique des effets de bord sur l'attractivité des PME et la fuite potentielle de capitaux.</p>
+                    </div>
+                `;
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            renderReforms(reformsData);
+
+            const ctxDebt = document.getElementById('debtChart').getContext('2d');
+            new Chart(ctxDebt, {
+                type: 'line',
+                data: {
+                    labels: ['2024', '2025', '2026', '2029 (Cible)', '2034', '2038 (Projection)'],
+                    datasets: [
+                        {
+                            label: 'Statu Quo (Sans Réformes)',
+                            data: [105.7, 108.2, 112.0, 118.5, 125.0, 130.0],
+                            borderColor: '#f43f5e',
+                            backgroundColor: 'rgba(244, 63, 94, 0.1)',
+                            borderWidth: 2,
+                            fill: true,
+                            tension: 0.2
+                        },
+                        {
+                            label: 'Trajectoire Ambitieuse Arizona',
+                            data: [105.7, 106.0, 105.2, 102.0, 98.5, 95.0],
+                            borderColor: '#10b981',
+                            backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                            borderWidth: 2,
+                            borderDash: [5, 5],
+                            fill: false,
+                            tension: 0.2
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'top', labels: { boxWidth: 12, font: { size: 10 } } },
+                        tooltip: { mode: 'index', intersect: false }
+                    },
+                    scales: {
+                        y: { 
+                            title: { display: true, text: '% du PIB', font: { size: 10 } },
+                            min: 90, max: 140
+                        }
+                    }
+                }
+            });
+
+            const ctxYield = document.getElementById('yieldChart').getContext('2d');
+            new Chart(ctxYield, {
+                type: 'bar',
+                data: {
+                    labels: ['Anti-Fraude Fiscale', 'Écofiscalité/TVA', 'Activation Chômage', 'Cotisations/Emploi'],
+                    datasets: [
+                        {
+                            label: 'Estimation Gouvernement (Mld €)',
+                            data: [3.2, 2.5, 1.8, 4.0],
+                            backgroundColor: '#3b82f6'
+                        },
+                        {
+                            label: 'Réévaluation Cour des Comptes',
+                            data: [0.12, 0.8, 0.5, 2.1],
+                            backgroundColor: '#f59e0b'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'top', labels: { boxWidth: 12, font: { size: 10 } } },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.dataset.label + ': ' + context.raw + ' Mld €';
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: { title: { display: true, text: 'Milliards d\'euros (€)', font: { size: 10 } } }
+                    }
+                }
+            });
+
+            const ctxMedia = document.getElementById('mediaRadarChart').getContext('2d');
+            new Chart(ctxMedia, {
+                type: 'bar',
+                data: {
+                    labels: [
+                        'Rigueur Comptable',
+                        'Activation / Offre',
+                        'Impact Pouvoir d\'Achat',
+                        'Tensions de Personnes',
+                        'Menace Wallonie/Bxl'
+                    ],
+                    datasets: [
+                        {
+                            label: 'Presse Néerlandophone',
+                            data: [90, 85, 45, 60, 25],
+                            backgroundColor: '#f59e0b'
+                        },
+                        {
+                            label: 'Presse Francophone',
+                            data: [50, 40, 95, 88, 80],
+                            backgroundColor: '#6366f1'
+                        }
+                    ]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'top', labels: { boxWidth: 12, font: { size: 10 } } }
+                    },
+                    scales: {
+                        x: { min: 0, max: 100, title: { display: true, text: 'Intensité du Cadrage (0-100)', font: { size: 10 } } }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
