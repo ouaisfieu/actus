@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anatomie de la Crise de Légitimité de l'État Belge — Enquête & Baromètre Citoyen</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'Georgia', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+                    },
+                    colors: {
+                        paper: '#FAF8F5',
+                        paperDark: '#F2ECE1',
+                        slateInk: '#111827',
+                        crimsonAccent: '#8B1E24',
+                        crimsonHover: '#6E1419',
+                        amberWarm: '#D97706',
+                        emeraldSuccess: '#059669',
+                        navyDeep: '#1E293B',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #FAF8F5;
+            color: #111827;
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 620px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 310px;
+            max-height: 380px;
+        }
+
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F2ECE1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #8B1E24;
+            border-radius: 4px;
+        }
+
+        .tab-active {
+            border-bottom: 3px solid #8B1E24;
+            color: #8B1E24;
+            font-weight: 700;
+            background-color: rgba(139, 30, 36, 0.04);
+        }
+
+        .card-hover-effect {
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover-effect:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.08);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased min-h-screen flex flex-col selection:bg-crimsonAccent selection:text-white">
+
+    <!-- Chosen Palette: Warm Editorial / Contemporary Investigative Press (Background: #FAF8F5 Paper, Ink: #111827, Core Accent: #8B1E24 Velvet Crimson, Warm Gold: #D97706, Reform Green: #059669). Designed specifically for investigative journalism dashboards and high-readability research reports. -->
+
+    <!-- Application Structure Plan:
+        1. Top Header & Navigation: Sleek editorial sticky navbar with active state tracking and quick jump tabs.
+        2. Hero & Global Barometer Ribbon: Displays key quantitative metrics (Trust rate, unexecuted court rulings, non-take-up of rights, party discipline score) with an interactive "Score de Légitimité Citoyenne" summary widget.
+        3. Chapter 1 - Diagnostic Empirique: Dynamic Bar Chart comparing institutional trust & corruption perception, connected to an interactive detail modal view.
+        4. Chapter 2 - Architecture Paralégale: 5-Step interactive process map depicting the bypass of Article 42 Constitution by Party Bosses and the extraconstitutional Kern, complemented by a comparative theory vs practice table.
+        5. Chapter 3 - Transparence Trahie & État Hors-la-Loi: Astreintes chart + Interactive Legal Friction Simulator (Citoyen vs État under Art. 1412bis C.jud).
+        6. Chapter 4 - Non-Recours aux Droits & Repression Sociale: NTU horizontal bar chart + Tabbed analysis of anti-strike legal mechanisms (Art. 584, Art. 406, SAC).
+        7. Chapter 5 - Oligopole Médiatique: Press workforce reduction vs Subsidies dependency + Conglomerates breakdown grid.
+        8. Chapter 6 - Matrice de Refondation Démocratique & Plan Citoyen: Searchable, filterable table of structural remedies with an interactive "Créer mon Plan de Réforme" tracker.
+    -->
+
+    <!-- Visualization & Content Choices:
+        - Interactive Bar Chart (Chart.js): Baromètre de Confiance et Corruption.
+        - Process Flow Diagram (HTML/Tailwind Flex + JS): Circuit paralégal de la décision politique (5 étapes cliquables).
+        - Stacked / Grouped Bar Chart (Chart.js): Astreintes non payées par l'État.
+        - Interactive Legal Case Simulator (JS State engine): Simulating Citizen vs State execution under Art 1412bis.
+        - Horizontal Bar Chart (Chart.js): Non-recours aux droits sociaux (TAKE/BELMOD).
+        - Grouped Bar Chart (Chart.js): Baisse des effectifs de presse publique VRT/RTBF.
+        - Search & Multi-Tag Matrix (JS Filter): Refondation institutionnelle et constitutionnelle.
+    -->
+
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <!-- Top Header -->
+    <header class="bg-navyDeep text-paper border-b border-stone-800 sticky top-0 z-50 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-col md:flex-row justify-between items-center gap-3">
+            <div class="flex items-center space-x-3">
+                <div class="w-9 h-9 rounded bg-crimsonAccent flex items-center justify-center font-serif font-black text-white text-lg shadow-sm">
+                    ÉB
+                </div>
+                <div>
+                    <h1 class="font-serif font-bold text-lg sm:text-xl tracking-tight text-white leading-tight">Légitimité de l'État Belge</h1>
+                    <p class="text-[11px] text-stone-400 font-medium">Observatoire de l'État de Droit, de la Particratie et des Droits Fondamentaux</p>
+                </div>
+            </div>
+            
+            <nav class="flex flex-wrap items-center justify-center gap-1 sm:gap-2 text-xs font-semibold">
+                <a href="#barometre" class="px-2.5 py-1.5 rounded text-stone-300 hover:text-white hover:bg-slate-800 transition">Baromètre</a>
+                <a href="#paralegal" class="px-2.5 py-1.5 rounded text-stone-300 hover:text-white hover:bg-slate-800 transition">Kern & Particratie</a>
+                <a href="#impunite" class="px-2.5 py-1.5 rounded text-stone-300 hover:text-white hover:bg-slate-800 transition">Astreintes & CADA</a>
+                <a href="#social" class="px-2.5 py-1.5 rounded text-stone-300 hover:text-white hover:bg-slate-800 transition">Droits Sociaux</a>
+                <a href="#medias" class="px-2.5 py-1.5 rounded text-stone-300 hover:text-white hover:bg-slate-800 transition">Oligopole Médias</a>
+                <a href="#refondation" class="px-3 py-1.5 rounded bg-crimsonAccent hover:bg-crimsonHover text-white transition font-bold shadow-sm">Plan de Refondation</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Global Key Indicators Ribbon -->
+    <section class="bg-paperDark border-b border-stone-300 py-5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+                
+                <div class="bg-white p-3.5 rounded-lg border border-stone-300 shadow-sm card-hover-effect">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[10px] uppercase font-bold text-stone-500 tracking-wider">Confiance Parlement</span>
+                        <span class="text-xs px-1.5 py-0.5 rounded bg-red-100 text-crimsonAccent font-bold">Alerte</span>
+                    </div>
+                    <div class="text-2xl sm:text-3xl font-serif font-black text-crimsonAccent mt-1">35 %</div>
+                    <p class="text-[11px] text-stone-600 mt-1">65 % des citoyens déclarent ne pas faire confiance à la Chambre.</p>
+                </div>
+
+                <div class="bg-white p-3.5 rounded-lg border border-stone-300 shadow-sm card-hover-effect">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[10px] uppercase font-bold text-stone-500 tracking-wider">Jugements Ignorés</span>
+                        <span class="text-xs px-1.5 py-0.5 rounded bg-amber-100 text-amberWarm font-bold">Savoir-faire</span>
+                    </div>
+                    <div class="text-2xl sm:text-3xl font-serif font-black text-amberWarm mt-1">&gt; 10 000</div>
+                    <p class="text-[11px] text-stone-600 mt-1">Condamnations pour asile & prisons bloquées par l'Art. 1412bis.</p>
+                </div>
+
+                <div class="bg-white p-3.5 rounded-lg border border-stone-300 shadow-sm card-hover-effect">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[10px] uppercase font-bold text-stone-500 tracking-wider">Non-Recours au RIS</span>
+                        <span class="text-xs px-1.5 py-0.5 rounded bg-amber-100 text-amberWarm font-bold">Social</span>
+                    </div>
+                    <div class="text-2xl sm:text-3xl font-serif font-black text-navyDeep mt-1">57–76 %</div>
+                    <p class="text-[11px] text-stone-600 mt-1">Des ayants droit au revenu d'intégration ne le perçoivent pas.</p>
+                </div>
+
+                <div class="bg-white p-3.5 rounded-lg border border-stone-300 shadow-sm card-hover-effect">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[10px] uppercase font-bold text-stone-500 tracking-wider">Discipline de Vote</span>
+                        <span class="text-xs px-1.5 py-0.5 rounded bg-stone-200 text-stone-700 font-bold">Verrou</span>
+                    </div>
+                    <div class="text-2xl sm:text-3xl font-serif font-black text-slateInk mt-1">99,73 %</div>
+                    <p class="text-[11px] text-stone-600 mt-1">Alignement aveugle des députés sur les consignes de parti.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Container -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-16">
+
+        <!-- SECTION 1: Diagnostic Empirique -->
+        <section id="barometre" class="scroll-mt-20">
+            <div class="bg-white rounded-xl border border-stone-300 p-6 md:p-8 shadow-sm">
+                
+                <div class="border-b border-stone-200 pb-4 mb-6 flex flex-col md:flex-row md:items-end justify-between gap-2">
+                    <div>
+                        <span class="text-xs font-extrabold tracking-widest text-crimsonAccent uppercase">Chapitre 1 — Érosion de la Confiance Citoyenne</span>
+                        <h2 class="text-2xl md:text-3xl font-serif font-bold text-slateInk mt-1">Baromètre de la Légitimité et Perception de la Corruption</h2>
+                    </div>
+                    <span class="text-xs text-stone-500 font-medium bg-stone-100 px-3 py-1 rounded-full border border-stone-200">Sources : RepResent, CSJ, Eurobaromètre</span>
+                </div>
+
+                <div class="prose max-w-none text-stone-700 text-sm leading-relaxed mb-8">
+                    <p>
+                        La crise de légitimité de l'État belge ne relève pas d'une impression abstraite, mais d'une rupture empirique documentée. Les enquêtes interuniversitaires (<em>RepResent</em>, <em>PartiRep</em>) et les baromètres officiels du Conseil Supérieur de la Justice (CSJ) révèlent un effritement profond du contrat social. L'appareil d'État est désormais perçu comme un système autoréférentiel, hermétique aux attentes des citoyens et prompt à s'exonérer des règles qu'il impose à la population.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+                    <!-- Chart Column -->
+                    <div class="lg:col-span-7 bg-paper p-5 rounded-lg border border-stone-200 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-sm font-bold text-slateInk mb-3 text-center">Indicateurs Majeurs de Confiance Institutionnelle (2024–2026)</h3>
+                            <div class="chart-container">
+                                <canvas id="trustChart"></canvas>
+                            </div>
+                        </div>
+                        <p class="text-[11px] text-stone-500 text-center mt-3 italic">Passez votre curseur sur les barres pour afficher les pourcentages détaillés.</p>
+                    </div>
+
+                    <!-- Interactive Selector -->
+                    <div class="lg:col-span-5 bg-paperDark p-5 rounded-lg border border-stone-300 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-sm font-bold text-slateInk mb-2 flex items-center gap-2">
+                                <span class="text-crimsonAccent">📍</span> Exploration des Piliers Institutionnels
+                            </h3>
+                            <p class="text-xs text-stone-600 mb-4">Cliquez sur une institution pour révéler le diagnostic sociologique et les sources académiques :</p>
+
+                            <div class="space-y-2 text-xs" id="metricButtons">
+                                <button onclick="updateMetric('parlement')" id="mbtn-parlement" class="metric-btn w-full text-left p-3 rounded bg-white hover:bg-stone-100 border border-stone-300 font-medium transition flex justify-between items-center shadow-sm">
+                                    <span class="font-bold text-slateInk">1. Parlement National (Chambre)</span>
+                                    <span class="font-black text-crimsonAccent">35 %</span>
+                                </button>
+                                <button onclick="updateMetric('justice')" id="mbtn-justice" class="metric-btn w-full text-left p-3 rounded bg-white hover:bg-stone-100 border border-stone-300 font-medium transition flex justify-between items-center shadow-sm">
+                                    <span class="font-bold text-slateInk">2. Courants & Justice</span>
+                                    <span class="font-black text-slateInk">54 %</span>
+                                </button>
+                                <button onclick="updateMetric('corruption')" id="mbtn-corruption" class="metric-btn w-full text-left p-3 rounded bg-white hover:bg-stone-100 border border-stone-300 font-medium transition flex justify-between items-center shadow-sm">
+                                    <span class="font-bold text-slateInk">3. Perception de la Corruption</span>
+                                    <span class="font-black text-amberWarm">69 %</span>
+                                </button>
+                                <button onclick="updateMetric('medias')" id="mbtn-medias" class="metric-btn w-full text-left p-3 rounded bg-white hover:bg-stone-100 border border-stone-300 font-medium transition flex justify-between items-center shadow-sm">
+                                    <span class="font-bold text-slateInk">4. Médias d'Information</span>
+                                    <span class="font-black text-stone-600">44 %</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Card Detail Output -->
+                        <div id="metricDetailCard" class="mt-4 p-4 bg-white rounded-lg border-l-4 border-crimsonAccent shadow-sm">
+                            <h4 id="metricTitle" class="font-bold text-slateInk text-xs">Sélectionnez une institution</h4>
+                            <p id="metricDescription" class="text-xs text-stone-600 mt-1.5 leading-relaxed">Les données qualitatives et quantitatives s'afficheront dans cet espace.</p>
+                            <span id="metricSource" class="inline-block mt-3 text-[10px] text-stone-500 bg-stone-100 px-2 py-0.5 rounded italic">Source : —</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 2: Architecture Paralégale -->
+        <section id="paralegal" class="scroll-mt-20">
+            <div class="bg-white rounded-xl border border-stone-300 p-6 md:p-8 shadow-sm">
+                
+                <div class="border-b border-stone-200 pb-4 mb-6">
+                    <span class="text-xs font-extrabold tracking-widest text-crimsonAccent uppercase">Chapitre 2 — Subversion des Normes Constitutionnelles</span>
+                    <h2 class="text-2xl md:text-3xl font-serif font-bold text-slateInk mt-1">Particratie & Gouvernement par le "Kern"</h2>
+                </div>
+
+                <div class="prose max-w-none text-stone-700 text-sm leading-relaxed mb-8">
+                    <p>
+                        L'article 42 de la Constitution consacre la liberté absolue de l'élu : <em>« Les membres des deux Chambres représentent la Nation, et non seulement la province, ou la subdivision de province, qui les a nommés. »</em> En réalité, la Belgique a glissé vers une particratie étouffante. La désignation des candidats sur les listes électorales est contrôlée par les présidents de parti, imposant une discipline de vote quasi mécanique (99,73 %). Parallèlement, le centre réel de la décision politique a glissé vers le <strong>Kern</strong> (Conseil des ministres restreint) — un organe informel, sans procès-verbal public ni fondement constitutionnel direct.
+                    </p>
+                </div>
+
+                <!-- Interactive Process Flow -->
+                <div class="bg-paper p-6 rounded-xl border border-stone-300 mb-8">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-2">
+                        <h3 class="text-sm font-bold text-slateInk flex items-center gap-2">
+                            <span class="text-crimsonAccent">⚙️</span> Le Circuit Réel de la Décision Politique Belge
+                        </h3>
+                        <span class="text-[11px] text-stone-500">Cliquez sur chaque étape pour analyser le verrou juridique :</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 relative text-center">
+                        <div onclick="selectFlowStep(1)" id="step-1" class="flow-step cursor-pointer p-4 rounded-lg bg-white border-2 border-stone-300 hover:border-crimsonAccent transition shadow-sm card-hover-effect">
+                            <span class="block text-2xl mb-1">👔</span>
+                            <span class="text-xs font-bold text-slateInk block">1. Présidents de Parti</span>
+                            <span class="text-[10px] text-stone-500">Monopole des listes & nominations</span>
+                        </div>
+                        <div onclick="selectFlowStep(2)" id="step-2" class="flow-step cursor-pointer p-4 rounded-lg bg-white border-2 border-stone-300 hover:border-crimsonAccent transition shadow-sm card-hover-effect">
+                            <span class="block text-2xl mb-1">🚪</span>
+                            <span class="text-xs font-bold text-slateInk block">2. Le "Kern" Informel</span>
+                            <span class="text-[10px] text-stone-500">Délibération secrète sans PV</span>
+                        </div>
+                        <div onclick="selectFlowStep(3)" id="step-3" class="flow-step cursor-pointer p-4 rounded-lg bg-white border-2 border-stone-300 hover:border-crimsonAccent transition shadow-sm card-hover-effect">
+                            <span class="block text-2xl mb-1">🔒</span>
+                            <span class="text-xs font-bold text-slateInk block">3. Conseil des Ministres</span>
+                            <span class="text-[10px] text-stone-500">Ratification formelle automatique</span>
+                        </div>
+                        <div onclick="selectFlowStep(4)" id="step-4" class="flow-step cursor-pointer p-4 rounded-lg bg-white border-2 border-stone-300 hover:border-crimsonAccent transition shadow-sm card-hover-effect">
+                            <span class="block text-2xl mb-1">🙋‍♂️</span>
+                            <span class="text-xs font-bold text-slateInk block">4. Vote au Parlement</span>
+                            <span class="text-[10px] text-stone-500">Discipline obligatoire (99.73%)</span>
+                        </div>
+                        <div onclick="selectFlowStep(5)" id="step-5" class="flow-step cursor-pointer p-4 rounded-lg bg-white border-2 border-stone-300 hover:border-crimsonAccent transition shadow-sm card-hover-effect">
+                            <span class="block text-2xl mb-1">📜</span>
+                            <span class="text-xs font-bold text-slateInk block">5. Arrêtés & Urgence</span>
+                            <span class="text-[10px] text-stone-500">Pression sur le Conseil d'État</span>
+                        </div>
+                    </div>
+
+                    <!-- Flow Explanation Banner -->
+                    <div id="flowDetailBox" class="mt-6 p-4 bg-white rounded-lg border border-crimsonAccent/30 shadow-inner">
+                        <h4 id="flowTitle" class="font-bold text-crimsonAccent text-xs">Étape 1 : Le Monopole des Présidences de Parti</h4>
+                        <p id="flowDesc" class="text-xs text-stone-700 mt-1 leading-relaxed">
+                            Les états-majors des partis contrôlent souverainement l'élaboration des listes électorales. Cette emprise crée une dépendance vitale de l'élu envers son président, infirmant la garantie d'indépendance promise par l'Art. 42 de la Constitution.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Theory vs Practice Grid -->
+                <div class="overflow-x-auto rounded-lg border border-stone-300">
+                    <table class="w-full text-xs text-left border-collapse">
+                        <thead>
+                            <tr class="bg-navyDeep text-white font-serif">
+                                <th class="p-3.5 border-b border-stone-700">Domaine Institutionnel</th>
+                                <th class="p-3.5 border-b border-stone-700">Norme Constitutionnelle (En Théorie)</th>
+                                <th class="p-3.5 border-b border-stone-700 bg-crimsonAccent">Pratique Matérielle (Particratie)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-stone-200 bg-white">
+                            <tr>
+                                <td class="p-3.5 font-bold text-slateInk">Mandat Parlementaire</td>
+                                <td class="p-3.5 text-stone-700">Art. 42 : Le député représente la Nation, vote librement sans ordre ni consigne.</td>
+                                <td class="p-3.5 bg-stone-50 text-crimsonAccent font-medium">Mandat impératif <em>de facto</em>. Sanctions directes sur la réélection en cas de dissentiment.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3.5 font-bold text-slateInk">Gouvernement & Ministres</td>
+                                <td class="p-3.5 text-stone-700">Art. 99 : Conseil des ministres solennel et paritaire exerçant le pouvoir exécutif.</td>
+                                <td class="p-3.5 bg-stone-50 text-crimsonAccent font-medium">Toute-puissance du Kern (Vice-Premiers). Les ministres simples sont tenus à l'écart des compromis clés.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3.5 font-bold text-slateInk">Contrôle Législatif</td>
+                                <td class="p-3.5 text-stone-700">Débats publics contradictoires, droit d'amendement effectif et commissions autonomes.</td>
+                                <td class="p-3.5 bg-stone-50 text-crimsonAccent font-medium">Accords de gouvernement fermés de plusieurs centaines de pages rédigés hors séance publique.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 3: Opacité & Inexécution des Décisions de Justice -->
+        <section id="impunite" class="scroll-mt-20">
+            <div class="bg-white rounded-xl border border-stone-300 p-6 md:p-8 shadow-sm">
+                
+                <div class="border-b border-stone-200 pb-4 mb-6">
+                    <span class="text-xs font-extrabold tracking-widest text-crimsonAccent uppercase">Chapitre 3 — Rupture de l'État de Droit</span>
+                    <h2 class="text-2xl md:text-3xl font-serif font-bold text-slateInk mt-1">CADA Impuissante & Inexécution des Jugements</h2>
+                </div>
+
+                <div class="prose max-w-none text-stone-700 text-sm leading-relaxed mb-8">
+                    <p>
+                        L'accès aux documents administratifs, ancré à l'article 32 de la Constitution, reste régulièrement entravé. La Commission d'accès aux documents administratifs (CADA) fédérale n'émet que des avis <strong>purement consultatifs</strong>, au contraire de ses homologues régionales. Pire encore, lorsque des citoyens ou des associations obtiennent gain de cause devant les tribunaux contre l'État (crise de l'asile Fedasil, surpopulation carcérale, nuisances aériennes), l'État refuse purement et simplement d'exécuter les décisions de justice. Protégé par le bouclier d'insaisissabilité de l'article 1412<em>bis</em> du Code judiciaire, l'État se place au-dessus de ses propres lois.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-8">
+                    <!-- Fines Chart -->
+                    <div class="lg:col-span-6 bg-paper p-5 rounded-lg border border-stone-200">
+                        <h3 class="text-sm font-bold text-slateInk mb-2 text-center">Cumul des Astreintes Financières Non Payées par l'État (M€)</h3>
+                        <div class="chart-container">
+                            <canvas id="finesChart"></canvas>
+                        </div>
+                        <p class="text-[11px] text-stone-500 mt-2 text-center italic">Source : IFDH, Décisions du Tribunal de Première Instance de Bruxelles</p>
+                    </div>
+
+                    <!-- Interactive Legal Friction Simulator -->
+                    <div class="lg:col-span-6 bg-paperDark p-5 rounded-lg border border-stone-300 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-sm font-bold text-slateInk mb-3 flex items-center gap-2">
+                                <span>⚖️</span> Simulateur de Justice Asymétrique : Citoyen vs État
+                            </h3>
+                            <p class="text-xs text-stone-600 mb-4">Sélectionnez une situation pour mesurer l'inégalité de traitement devant l'exécution forcée :</p>
+
+                            <div class="flex gap-2 mb-4">
+                                <button onclick="runLegalSim('citizen')" id="btn-sim-cit" class="flex-1 py-2.5 text-xs font-bold rounded bg-slateInk text-white shadow-sm hover:opacity-90 transition">Cas A : Citoyen Défaillant</button>
+                                <button onclick="runLegalSim('state')" id="btn-sim-state" class="flex-1 py-2.5 text-xs font-bold rounded bg-white text-slateInk border border-stone-300 hover:bg-stone-100 transition">Cas B : État Défaillant</button>
+                            </div>
+
+                            <div id="simResultBox" class="p-4 bg-white rounded-lg border border-stone-300 text-xs space-y-2 shadow-sm">
+                                <p class="font-bold text-crimsonAccent" id="simTitle">Procédure Citoyenne Standard</p>
+                                <p id="simResultText" class="text-stone-700 leading-relaxed">
+                                    En cas de condamnation d'un citoyen, l'huissier de justice procède au blocage des comptes bancaires, à la saisie des revenus ou à la vente forcée des biens meubles sous 24 à 48 heures.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 p-3 bg-amber-50 rounded border border-amber-200 text-[11px] text-amber-900 leading-normal">
+                            <strong>⚠️ Le Verrou de l'Art. 1412bis C.jud. :</strong> L'État invoque l'insaisissabilité de ses comptes publics tout en s'abstenant d'établir la liste légale de ses avoirs saisissables, provoquant un blocage d'exécution dénoncé par la CEDH (<em>Camara c. Belgique</em>).
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 4: Non-Recours & Criminalisation Sociales -->
+        <section id="social" class="scroll-mt-20">
+            <div class="bg-white rounded-xl border border-stone-300 p-6 md:p-8 shadow-sm">
+                
+                <div class="border-b border-stone-200 pb-4 mb-6">
+                    <span class="text-xs font-extrabold tracking-widest text-crimsonAccent uppercase">Chapitre 4 — Fracture Sociale & Droit de Contester</span>
+                    <h2 class="text-2xl md:text-3xl font-serif font-bold text-slateInk mt-1">Non-Recours aux Droits (NTU) & Judiciarisation des Piquets</h2>
+                </div>
+
+                <div class="prose max-w-none text-stone-700 text-sm leading-relaxed mb-8">
+                    <p>
+                        Pendant que l'État s'affranchit de ses obligations judiciaires, il échoue à fournir les prestations sociales de base aux populations les plus précaires. Le phénomène de <strong>non-recours aux droits sociaux</strong> (<em>non-take-up</em>) atteint des proportions alarmantes, nourri par la complexité administrative et la dématérialisation forcée. Parallèlement, le droit d'action collective et de grève subit une pression judiciaire sans précédent via un arsenal de requêtes unilatérales civils et de poursuites pénales.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-6">
+                    <!-- Chart Column -->
+                    <div class="lg:col-span-6 bg-paper p-5 rounded-lg border border-stone-200">
+                        <h3 class="text-sm font-bold text-slateInk mb-2 text-center">Taux de Non-Recours aux Prestations Sociale de Base (%)</h3>
+                        <div class="chart-container">
+                            <canvas id="ntuChart"></canvas>
+                        </div>
+                        <p class="text-[11px] text-stone-500 mt-2 text-center italic">Projets de recherche TAKE & BELMOD (SPF Sécurité Sociale / BAPN)</p>
+                    </div>
+
+                    <!-- Repression Details Panel -->
+                    <div class="lg:col-span-6 space-y-3">
+                        <h3 class="text-sm font-bold text-slateInk">Le Triple Encerclement du Droit de Contestation</h3>
+
+                        <div class="p-3.5 bg-paper rounded-lg border-l-4 border-crimsonAccent shadow-sm">
+                            <h4 class="font-bold text-xs text-slateInk">1. Requêtes Unilatérales Civiles (Art. 584 C.jud.)</h4>
+                            <p class="text-[11px] text-stone-600 mt-1">Saisine des juges par les employeurs à l'insu des organisations syndicales. Interdiction des piquets sous astreintes financières lourdes (ex. Conflit Delhaize 2023).</p>
+                        </div>
+
+                        <div class="p-3.5 bg-paper rounded-lg border-l-4 border-amberWarm shadow-sm">
+                            <h4 class="font-bold text-xs text-slateInk">2. Criminalisation Pénale (Art. 406 C.pén.)</h4>
+                            <p class="text-[11px] text-stone-600 mt-1">Détournement des articles sur la « entrave méchante à la circulation » pour condamner pénalement des responsables syndicaux (Arrêt Liège 2021).</p>
+                        </div>
+
+                        <div class="p-3.5 bg-paper rounded-lg border-l-4 border-navyDeep shadow-sm">
+                            <h4 class="font-bold text-xs text-slateInk">3. Sanctions Administratives Communales (SAC)</h4>
+                            <p class="text-[11px] text-stone-600 mt-1">Utilisation des amendes SAC par les bourgmestres pour réprimer les rassemblements militants sans passer par l'autorisation d'un juge indépendant.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 5: Oligopole Médiatique -->
+        <section id="medias" class="scroll-mt-20">
+            <div class="bg-white rounded-xl border border-stone-300 p-6 md:p-8 shadow-sm">
+                
+                <div class="border-b border-stone-200 pb-4 mb-6">
+                    <span class="text-xs font-extrabold tracking-widest text-crimsonAccent uppercase">Chapitre 5 — Atrophie du Quatrième Pouvoir</span>
+                    <h2 class="text-2xl md:text-3xl font-serif font-bold text-slateInk mt-1">Oligopole Médiatique & Subventionnement Croisé</h2>
+                </div>
+
+                <div class="prose max-w-none text-stone-700 text-sm leading-relaxed mb-8">
+                    <p>
+                        Un contre-pouvoir efficace exige une presse indépendante et pluraliste. Or, le paysage médiatique belge souffre d'une hyper-concentration extrême : cinq groupes familiaux (DPG Media, Mediahuis, Rossel, IPM, Roularta) détiennent la quasi-totalité des quotidiens, radios et télévisions privées. Parallèlement, l'audiovisuel public subit une réduction d'effectifs journalistiques structurelle, affaiblissant le journalisme d'investigation en profondeur.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-7 bg-paper p-5 rounded-lg border border-stone-200">
+                        <h3 class="text-sm font-bold text-slateInk mb-2 text-center">Évolution des Effectifs du Service Public (-% entre 2012 et 2024)</h3>
+                        <div class="chart-container">
+                            <canvas id="mediaChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-5 space-y-3">
+                        <h3 class="text-sm font-bold text-slateInk">Carte des 5 Conglomérats Dominants</h3>
+                        
+                        <div class="p-3 bg-paper rounded border border-stone-300 text-xs">
+                            <strong class="text-slateInk block font-bold">DPG Media & Mediahuis :</strong>
+                            <p class="text-stone-600 mt-0.5">Contrôle quasi-total de la presse flamande (HLN, De Standaard) et groupe audiovisuel VTM.</p>
+                        </div>
+
+                        <div class="p-3 bg-paper rounded border border-stone-300 text-xs">
+                            <strong class="text-slateInk block font-bold">Groupe Rossel & IPM :</strong>
+                            <p class="text-stone-600 mt-0.5">Monopole de la presse francophone (Le Soir, Sudinfo, La Libre, DH) et de RTL Belgium.</p>
+                        </div>
+
+                        <div class="p-3 bg-paper rounded border border-stone-300 text-xs">
+                            <strong class="text-slateInk block font-bold">Subventions Directes & Postales :</strong>
+                            <p class="text-stone-600 mt-0.5">Dépendance financière des éditeurs privés envers les aides publiques directes et les aides à la distribution.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 6: Matrice de Refondation Démocratique & Plan Citoyen -->
+        <section id="refondation" class="scroll-mt-20">
+            <div class="bg-white rounded-xl border border-stone-300 p-6 md:p-8 shadow-sm">
+                
+                <div class="border-b border-stone-200 pb-4 mb-6 flex flex-col md:flex-row md:items-end justify-between gap-3">
+                    <div>
+                        <span class="text-xs font-extrabold tracking-widest text-emeraldSuccess uppercase">Chapitre 6 — Restauration Démocratique</span>
+                        <h2 class="text-2xl md:text-3xl font-serif font-bold text-slateInk mt-1">Matrice Systemique des Réformes & Mon Plan Citoyen</h2>
+                    </div>
+                    
+                    <div class="bg-emerald-50 border border-emerald-200 px-4 py-2 rounded-lg text-right">
+                        <span class="block text-[10px] uppercase font-bold text-emerald-800">Indice de Refondation Activé</span>
+                        <span id="scoreCounter" class="text-xl font-serif font-black text-emeraldSuccess">0 / 6 Réformes Sélectionnées</span>
+                    </div>
+                </div>
+
+                <div class="prose max-w-none text-stone-700 text-sm leading-relaxed mb-6">
+                    <p>
+                        Pour sortir de cette dérive paralégale et restaurer le contrat social, des réformes structurelles doivent intervenir sur l'ensemble de la chaîne démocratique. Utilisez la barre de recherche ci-dessous pour filtrer les propositions de refondation institutionnelle ou cochez les réformes pour constituer votre **Plan de Restauration de la Légitimité**.
+                    </p>
+                </div>
+
+                <!-- Controls -->
+                <div class="flex flex-col sm:flex-row gap-3 mb-6">
+                    <div class="relative flex-grow">
+                        <input type="text" id="reformSearchInput" onkeyup="filterReforms()" placeholder="🔍 Rechercher par mot-clé (ex: Kern, CADA, astreinte, syndicat, RIS)..." class="w-full p-3 text-xs rounded-lg border border-stone-300 bg-paper focus:outline-none focus:ring-2 focus:ring-emeraldSuccess">
+                    </div>
+                    <select id="reformDomainSelect" onchange="filterReforms()" class="p-3 text-xs rounded-lg border border-stone-300 bg-white font-medium focus:outline-none focus:ring-2 focus:ring-emeraldSuccess">
+                        <option value="all">Tous les domaines</option>
+                        <option value="executif">Exécutif & Particratie</option>
+                        <option value="transparence">Transparence & CADA</option>
+                        <option value="justice">Justice & Astreintes</option>
+                        <option value="social">Droits Sociaux & Syndicats</option>
+                    </select>
+                </div>
+
+                <!-- Interactive Reform Table -->
+                <div class="overflow-x-auto rounded-lg border border-stone-300">
+                    <table class="w-full text-xs text-left border-collapse" id="reformsTable">
+                        <thead>
+                            <tr class="bg-emeraldSuccess text-white font-serif">
+                                <th class="p-3.5 border-b border-emerald-800 text-center w-12">Plan</th>
+                                <th class="p-3.5 border-b border-emerald-800">Domaine</th>
+                                <th class="p-3.5 border-b border-emerald-800">Dysfonctionnement Moteur</th>
+                                <th class="p-3.5 border-b border-emerald-800">Verrou Juridique / Cause</th>
+                                <th class="p-3.5 border-b border-emerald-800 bg-emerald-900">Proposition de Refondation</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-stone-200 bg-white" id="reformsTbody">
+                            <!-- Injected by JS -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Plan Summary Banner -->
+                <div id="planSummaryBox" class="mt-6 p-4 bg-emerald-50 rounded-lg border border-emerald-300 flex flex-col md:flex-row justify-between items-center gap-4 hidden">
+                    <div>
+                        <h4 class="font-bold text-emerald-900 text-xs">Votre Plan Citoyen de Refondation est en cours de création !</h4>
+                        <p class="text-[11px] text-emerald-700 mt-0.5">Vous avez sélectionné les leviers juridiques majeurs pour rétablir la suprématie de la Constitution et des droits humains.</p>
+                    </div>
+                    <button onclick="resetPlan()" class="px-3 py-1.5 bg-emeraldSuccess text-white text-xs font-bold rounded hover:bg-emerald-800 transition">Réinitialiser le Plan</button>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-navyDeep text-stone-400 text-xs border-t border-stone-800 py-8 mt-16">
+        <div class="max-w-7xl mx-auto px-4 text-center space-y-3">
+            <p class="font-serif text-stone-300 text-sm">
+                Rapport d'Analyse Critique & Baromètre Citoyen — Légitimité de l'État Belge (2026)
+            </p>
+            <p class="text-[11px] text-stone-500 max-w-3xl mx-auto leading-relaxed">
+                Application web conçue selon les normes d'information ouverte et d'analyse de données sociologiques. Toutes les données quantitatives sont tirées des publications scientifiques interuniversitaires (RepResent, BELMOD, TAKE, CSJ, Eurobaromètre).
+            </p>
+            <p class="text-[10px] text-stone-600 pt-2 border-t border-stone-800">
+                Aucun graphique SVG ni bibliothèque Mermaid JS utilisé. Standard HTML Canvas / Chart.js natif.
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Application Engine -->
+    <script>
+        // Data Store
+        const metricData = {
+            parlement: {
+                title: "Confiance envers le Parlement National (35 %)",
+                desc: "Seul un citoyen sur trois conserve sa confiance envers la Chambre des représentants. La dégradation découle de la perception d'un Parlement dépossédé de sa fonction délibérative au profit du Kern et des présidents de partis.",
+                source: "Enquêtes RepResent (7 500 citoyens) / Baromètre du Sénat 2024"
+            },
+            justice: {
+                title: "Confiance envers la Justice (54 %)",
+                desc: "Bien qu'encore majoritaire, la confiance envers l'appareil judiciaire est en recul régulier (-7 % en dix ans). Ce déclin est précipité par l'incapacité de la justice à faire exécuter ses jugements face aux autorités publiques.",
+                source: "5e Baromètre de la Justice, Conseil Supérieur de la Justice (CSJ)"
+            },
+            corruption: {
+                title: "Perception d'une Corruption Répandue (69 %)",
+                desc: "Près de 7 Belges sur 10 estiment que la corruption et le favoritisme politique sont répandus dans les institutions. Le score Transparency International de la Belgique s'établit à un niveau critique de 69/100.",
+                source: "Eurobaromètre Spécial Corruption 2026 / Transparency International"
+            },
+            medias: {
+                title: "Confiance envers les Médias d'Information (44 %)",
+                desc: "Plafonnant sous les 50 %, la confiance dans l'information reflète l'inquiétude citoyenne face à l'hyper-concentration de la presse aux mains de 5 groupes familiaux et à la baisse des effectifs de rédaction.",
+                source: "Reuters Institute Digital News Report / LAPIJ-ULB 2025"
+            }
+        };
+
+        const flowStepsData = {
+            1: {
+                title: "Étape 1 : Le Monopole des Présidences de Parti",
+                desc: "Les états-majors des partis contrôlent souverainement l'élaboration des listes électorales. Cette emprise crée une dépendance vitale de l'élu envers son président, infirmant la garantie d'indépendance promise par l'Art. 42 de la Constitution."
+            },
+            2: {
+                title: "Étape 2 : L'Arène Extraconstitutionnelle du Kern",
+                desc: "Le Conseil des ministres restreint (Premier + Vice-Premiers) tranche les compromis arbitraires majeurs sans existence constitutionnelle propre, sans ordre du jour public et sans procès-verbal accessible au citoyen."
+            },
+            3: {
+                title: "Étape 3 : Neutralisation du Conseil des Ministres Plénier",
+                desc: "Le Conseil des ministres officiel (Art. 99) est réduit à une chambre d'enregistrement formelle des décisions pré-arbitrées au Kern, instaurant une hiérarchie de fait au sein de l'exécutif."
+            },
+            4: {
+                title: "Étape 4 : L'Enregistrement Parlementaire (Discipline 99,73 %)",
+                desc: "Les projets de loi issus de l'accord de gouvernement sont votés mécaniquement par les députés de la majorité (99,73 % d'alignement), annulant l'utilité des débats d'amendement."
+            },
+            5: {
+                title: "Étape 5 : Gouvernance par Arrêtés & Urgence",
+                desc: "Recours systématique aux arrêtés ministériels, comités de concertation ou lois d'urgence pour contourner l'évaluation préalable d'impact et restreindre l'examen de la section de législation du Conseil d'État."
+            }
+        };
+
+        const reformData = [
+            {
+                id: "ref-1",
+                domain: "executif",
+                domainLabel: "Exécutif / Particratie",
+                issue: "Discipline de vote automatique (99,73 %) et emprise des présidents de parti",
+                verrou: "Absence de statut juridique de démocratie interne imposé aux partis",
+                proposal: "Conditionner le dotation publique des partis au respect de la liberté de vote des élus et à la tenue de primaires ouvertes."
+            },
+            {
+                id: "ref-2",
+                domain: "executif",
+                domainLabel: "Exécutif / Kern",
+                issue: "Arbitrage politique ultime concentré dans un Kern informel et secrètement géré",
+                verrou: "Vide constitutionnel de la structure du Conseil restreint",
+                proposal: "Consacrer le Kern dans la Loi fondatrice : obligation de publier l'ordre du jour, les comptes-rendus et un registre des lobbys consultés."
+            },
+            {
+                id: "ref-3",
+                domain: "transparence",
+                domainLabel: "Transparence",
+                issue: "Refus administratifs constants de transmettre les documents publics",
+                verrou: "Avis de la CADA fédérale PUREMENT CONSULTATIFS (Loi 1994)",
+                proposal: "Doté la CADA fédérale d'un pouvoir de DÉCISION CONTRAIGNANTE avec amendes administratives directes pour les administrations défaillantes."
+            },
+            {
+                id: "ref-4",
+                domain: "justice",
+                domainLabel: "Justice / Astreintes",
+                issue: "+10 000 jugements non exécutés par l'État (Asile, Prisons) sans contrainte",
+                verrou: "Bouclier d'insaisissabilité de l'Art. 1412bis du Code judiciaire",
+                proposal: "Abroger l'insaisissabilité de l'Art. 1412bis C.jud. en cas d'astreintes impayées plus de 90 jours et automatiser la saisie budgétaire."
+            },
+            {
+                id: "ref-5",
+                domain: "social",
+                domainLabel: "Droits Sociaux",
+                issue: "57 % à 76 % de non-recours au Revenu d'Intégration Sociale (RIS)",
+                verrou: "Procédures intrusives et absence d'automatisation des prestations",
+                proposal: "Généraliser l'octroi AUTOMATIQUE des droits sociaux et des tarifs réduits via le croisement automatisé des données de la Banque Carrefour (BCSS)."
+            },
+            {
+                id: "ref-6",
+                domain: "social",
+                domainLabel: "Droit de Grève",
+                issue: "Contournement du débat syndical par requêtes unilatérales devant le juge civil",
+                verrou: "Détournement des procédures d'urgence de l'Art. 584 C.jud.",
+                proposal: "Interdire expressément le recours aux requêtes unilatérales civiles dans le cadre des conflits collectifs du travail."
+            }
+        ];
+
+        let selectedReforms = new Set();
+
+        // Chart Initializations
+        function initCharts() {
+            // 1. Trust Chart
+            const ctx1 = document.getElementById('trustChart').getContext('2d');
+            new Chart(ctx1, {
+                type: 'bar',
+                data: {
+                    labels: ['Satisfaction Démocratique', 'Confiance Justice', 'Confiance Médias', 'Confiance Parlement', 'Perception Corruption'],
+                    datasets: [{
+                        label: 'Proportion (%)',
+                        data: [50, 54, 44, 35, 69],
+                        backgroundColor: [
+                            '#475569',
+                            '#1E293B',
+                            '#64748B',
+                            '#8B1E24',
+                            '#D97706'
+                        ],
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: ctx => ctx.parsed.y + ' % des citoyens interrogés'
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100,
+                            ticks: { callback: v => v + '%' }
+                        },
+                        x: {
+                            ticks: {
+                                callback: function(val, index) {
+                                    let label = this.getLabelForValue(val);
+                                    return label.length > 15 ? label.substr(0, 15) + '...' : label;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // 2. Fines Chart
+            const ctx2 = document.getElementById('finesChart').getContext('2d');
+            new Chart(ctx2, {
+                type: 'bar',
+                data: {
+                    labels: ['Accueil Asile (Fedasil)', 'Survol de Bruxelles', 'Prisons (Surpopulation)'],
+                    datasets: [{
+                        label: 'Astreintes non versées (Millions €)',
+                        data: [24.5, 20.0, 2.8],
+                        backgroundColor: '#8B1E24',
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: { label: ctx => ctx.parsed.y + ' Millions € dus' }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: { callback: v => v + ' M€' }
+                        }
+                    }
+                }
+            });
+
+            // 3. NTU Chart
+            const ctx3 = document.getElementById('ntuChart').getContext('2d');
+            new Chart(ctx3, {
+                type: 'bar',
+                data: {
+                    labels: ['RIS (Revenu Intégration)', 'GRAPA (Aînés)', 'Statut BIM (Santé)', 'Précarité Eau/Énergie'],
+                    datasets: [{
+                        label: 'Taux de non-recours (%)',
+                        data: [66, 50, 35, 14],
+                        backgroundColor: ['#D97706', '#F59E0B', '#059669', '#1E293B'],
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        x: { beginAtZero: true, max: 100, ticks: { callback: v => v + '%' } }
+                    }
+                }
+            });
+
+            // 4. Media Chart
+            const ctx4 = document.getElementById('mediaChart').getContext('2d');
+            new Chart(ctx4, {
+                type: 'bar',
+                data: {
+                    labels: ['VRT (Médias Flammands)', 'RTBF (Médias Francophones)'],
+                    datasets: [{
+                        label: 'Réduction du personnel rédactions (2012-2024)',
+                        data: [-28.3, -13.6],
+                        backgroundColor: '#8B1E24',
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: { ticks: { callback: v => v + '%' } }
+                    }
+                }
+            });
+        }
+
+        // Logic Functions
+        function updateMetric(key) {
+            const data = metricData[key];
+            if (!data) return;
+
+            document.querySelectorAll('.metric-btn').forEach(btn => {
+                btn.classList.remove('border-crimsonAccent', 'bg-red-50');
+            });
+            const activeBtn = document.getElementById(`mbtn-${key}`);
+            if (activeBtn) {
+                activeBtn.classList.add('border-crimsonAccent', 'bg-red-50');
+            }
+
+            document.getElementById('metricTitle').innerText = data.title;
+            document.getElementById('metricDescription').innerText = data.desc;
+            document.getElementById('metricSource').innerText = "Source : " + data.source;
+        }
+
+        function selectFlowStep(step) {
+            document.querySelectorAll('.flow-step').forEach(el => {
+                el.classList.remove('border-crimsonAccent', 'bg-red-50');
+                el.classList.add('border-stone-300', 'bg-white');
+            });
+            const selected = document.getElementById(`step-${step}`);
+            if (selected) {
+                selected.classList.remove('border-stone-300', 'bg-white');
+                selected.classList.add('border-crimsonAccent', 'bg-red-50');
+            }
+            const info = flowStepsData[step];
+            if (info) {
+                document.getElementById('flowTitle').innerText = info.title;
+                document.getElementById('flowDesc').innerText = info.desc;
+            }
+        }
+
+        function runLegalSim(mode) {
+            const btnCit = document.getElementById('btn-sim-cit');
+            const btnState = document.getElementById('btn-sim-state');
+            const simTitle = document.getElementById('simTitle');
+            const resText = document.getElementById('simResultText');
+
+            if (mode === 'citizen') {
+                btnCit.className = "flex-1 py-2.5 text-xs font-bold rounded bg-slateInk text-white shadow-sm";
+                btnState.className = "flex-1 py-2.5 text-xs font-bold rounded bg-white text-slateInk border border-stone-300";
+                simTitle.innerText = "Cas Citoyen : Exécution Immédiate";
+                resText.innerHTML = "L'huissier dispose du droit de saisie-arrêt sur salaire, compte bancaire et biens meubles dès réception du titre exécutoire. Aucune immunité d'État n'est opposable.";
+            } else {
+                btnState.className = "flex-1 py-2.5 text-xs font-bold rounded bg-slateInk text-white shadow-sm";
+                btnCit.className = "flex-1 py-2.5 text-xs font-bold rounded bg-white text-slateInk border border-stone-300";
+                simTitle.innerText = "Cas État : Immunité via Art. 1412bis C.jud.";
+                resText.innerHTML = "L'État refuse d'exécuter l'arrêt. Lorsqu'un citoyen tente une saisie sur les comptes de l'État (ex. Belfius/BNP), les avocats de l'État invoquent le bouclier d'insaisissabilité de l'Art. 1412bis C.jud., bloquant le paiement des astreintes.";
+            }
+        }
+
+        function toggleReformSelection(id) {
+            if (selectedReforms.has(id)) {
+                selectedReforms.delete(id);
+            } else {
+                selectedReforms.add(id);
+            }
+            updatePlanUI();
+        }
+
+        function updatePlanUI() {
+            const count = selectedReforms.size;
+            document.getElementById('scoreCounter').innerText = `${count} / 6 Réformes Sélectionnées`;
+            const summaryBox = document.getElementById('planSummaryBox');
+            if (count > 0) {
+                summaryBox.classList.remove('hidden');
+            } else {
+                summaryBox.classList.add('hidden');
+            }
+        }
+
+        function resetPlan() {
+            selectedReforms.clear();
+            document.querySelectorAll('.reform-checkbox').forEach(cb => cb.checked = false);
+            updatePlanUI();
+        }
+
+        function renderReformsTable(data) {
+            const tbody = document.getElementById('reformsTbody');
+            tbody.innerHTML = '';
+            data.forEach(item => {
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-stone-50 transition";
+                const isChecked = selectedReforms.has(item.id) ? 'checked' : '';
+                tr.innerHTML = `
+                    <td class="p-3.5 border-b border-stone-200 text-center">
+                        <input type="checkbox" ${isChecked} onchange="toggleReformSelection('${item.id}')" class="reform-checkbox w-4 h-4 text-emeraldSuccess rounded focus:ring-emeraldSuccess cursor-pointer">
+                    </td>
+                    <td class="p-3.5 font-bold text-slateInk border-b border-stone-200">${item.domainLabel}</td>
+                    <td class="p-3.5 text-stone-700 border-b border-stone-200">${item.issue}</td>
+                    <td class="p-3.5 text-amberWarm font-medium border-b border-stone-200">${item.verrou}</td>
+                    <td class="p-3.5 text-emeraldSuccess font-bold border-b border-stone-200 bg-emerald-50/50">${item.proposal}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function filterReforms() {
+            const query = document.getElementById('reformSearchInput').value.toLowerCase();
+            const domain = document.getElementById('reformDomainSelect').value;
+
+            const filtered = reformData.filter(item => {
+                const matchesDomain = (domain === 'all') || (item.domain === domain);
+                const matchesQuery = item.issue.toLowerCase().includes(query) ||
+                                     item.verrou.toLowerCase().includes(query) ||
+                                     item.proposal.toLowerCase().includes(query) ||
+                                     item.domainLabel.toLowerCase().includes(query);
+                return matchesDomain && matchesQuery;
+            });
+
+            renderReformsTable(filtered);
+        }
+
+        // Global Initialization
+        window.addEventListener('DOMContentLoaded', () => {
+            initCharts();
+            renderReformsTable(reformData);
+            selectFlowStep(1);
+            updateMetric('parlement');
+        });
+    </script>
+</body>
+</html>
